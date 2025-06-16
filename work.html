@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Work Tasks</title>
+  <link rel="stylesheet" href="work.css" />
+</head>
+<body>
+
+  <!-- Thanh bên trái -->
+  <div class="left-toolbar">
+    <button class="toolbar-btn" onclick="location.href='work.html'">Home</button>
+    <button class="toolbar-btn" onclick="location.href='completed.html'">Completed</button>
+    <button class="toolbar-btn" onclick="location.href='group.html'">Group</button>
+    <button class="toolbar-btn" id="add-task-btn">Add</button>
+  </div>
+
+  <!-- Tiêu đề và ảnh động -->
+  <div class="header-title">
+          <img src="./images/work_banner.gif" alt="Working GIF" class="header-gif">
+    <div class="header-text" id="user-greeting">Cùng Làm Việc Nào !</div>
+  </div>
+
+  <!-- Vùng hiển thị người dùng -->
+  <div class="side-rectangle">
+    <div class="circle-container">
+      <div class="circle-text">User</div>
+      <div class="circle">
+        <img src="./images/user2.jpg" alt="ảnh tròn" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Danh sách công việc -->
+  <div id="task-list"></div>
+  <div class="work-container" id="work-container"></div>
+
+
+  <!-- Thư viện hiệu ứng -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+  <!-- Script hiển thị tên người dùng -->
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const user = JSON.parse(localStorage.getItem('loggedInUser'));
+      const userNameDiv = document.querySelector('.circle-text');
+      const greetingDiv = document.getElementById('user-greeting');
+
+      if (user && user.username) {
+        userNameDiv.textContent = user.username;
+        greetingDiv.textContent = `${user.username}, Cùng Làm Việc Nào !`;
+      } else {
+        userNameDiv.textContent = 'Người dùng';
+        greetingDiv.textContent = 'Xin Chào!';
+      }
+    });
+  </script>
+
+  <!-- Script chức năng công việc -->
+  <script src="work.js"></script>
+  <script>
+    document.getElementById('add-task-btn').addEventListener('click', () => {
+      const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+      const newTask = { text: 'Công việc mới', deadline: null };
+      tasks.push(newTask);
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+      location.reload();
+    });
+  </script> 
+</body>
+</html>

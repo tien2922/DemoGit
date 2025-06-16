@@ -1,0 +1,60 @@
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  color: #333;
+  background: url(./images/cam_vang.jpg) no-repeat center center/cover;
+min-height: 100vh;
+}
+
+
+.first {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 50px 20px 30px 20px;
+  box-sizing: border-box;
+}
+
+.mo-dau h1 {
+  text-align: center;
+  margin-top: 0;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+
+.section-title {
+  margin-left: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.phan1 h1,
+.phan2 h2,
+.phan3 h3,
+.phan3 h4,
+.phan3 h5,
+.phan4 h6 {
+  margin-left: 20px;
+  margin-bottom: 15px;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 1.6;
+}
+
+
+.phan3 h3,
+.phan3 h4,
+.phan3 h5 {
+  margin-top: 10px;
+}
+
+
+body::after {
+  content: "";
+  display: block;
+  height: 50px;
+}

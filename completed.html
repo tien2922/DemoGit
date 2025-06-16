@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thống kê Công Việc Hoàn Thành</title>
+  <link rel="stylesheet" href="completed.css" />
+</head>
+<body>
+
+  <!-- Thanh bên trái -->
+  <div class="left-toolbar">
+    <button class="toolbar-btn" onclick="location.href='work.html'">Home</button>
+    <button class="toolbar-btn" onclick="location.href='completed.html'">Completed</button>
+    <button class="toolbar-btn" onclick="location.href='group.html'">Group</button>
+  </div>
+
+  <div class="main-content">
+    <!-- Banner -->
+    <div class="banner-container">
+      <h1>Các Công Việc Đã Hoàn Thành</h1>
+      
+    </div>
+
+    <!-- Vùng thống kê: biểu đồ đường -->
+    <div class="stats-container">
+      <div class="charts-column">
+        <canvas id="completionLineChart"></canvas>
+      </div>
+      <ul id="completed-tasks-list"></ul>
+    </div>
+
+    <!-- Phần Lịch công việc -->
+    <div id="calendar-section">
+      <h2>Lịch công việc</h2>
+      <div class="calendar-header">
+        <button id="prev-month">&lt;</button>
+        <span id="month-year"></span>
+        <button id="next-month">&gt;</button>
+      </div>
+      <div class="calendar" id="calendar-grid"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="completed.js"></script>
+</body>
+</html>

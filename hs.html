@@ -1,0 +1,65 @@
+<!--
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task Manager To-Do List</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+
+  <div class="todo-container">
+    <div class="todo-app">
+      <h1>Demi Craven</h1>
+      <form class="input-area">
+        <input type="text" id="task-input" placeholder="Add a new task..." />
+        <button type="submit" id="add-task-btn"><i class="fa-solid fa-plus"></i></button>
+      </form>
+      <div class="todos-container">
+        <ul id="task-list"></ul>
+      </div>
+      <button id="add-work-btn">Do It</button>
+      <img class="empty-image" src="./images/sach_12.png" alt="empty" />
+    </div>
+  </div>
+
+
+  <div class="banner-section">
+    <div class="left">
+      <h1>Demi Craven</h1>
+      <p>Công Cụ Quản Lý Công Việc</p>
+      <p>Email: <a href="mailto:hnak039@gmail.com">hnak039@gmail.com</a></p>
+      <p><a href="dieu-khoan.html">ĐIỀU KHOẢN SỬ DỤNG</a> | <a href="chinh-sach.html">CHÍNH SÁCH BẢO MẬT</a></p>
+    </div>
+
+    <div class="center">
+      <h2>ỨNG DỤNG QUẢN LÝ CÔNG VIỆC TỐT NHẤT</h2>
+    </div>
+
+<div class="right">
+  <h3>Liên hệ:</h3>
+  <ul>
+    <li><a href="mailto:hnak039@gmail.com">Email</a></li>
+    <li><a href="https://www.facebook.com/acquy.hoangkim.depzai" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+    <li><a href="https://www.instagram.com/xiaochaomengg39/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+  </ul>
+</div>
+
+  </div>
+<script>
+  const currentUser = JSON.parse(localStorage.getItem('loggedInUser'));
+  if (currentUser) {
+    document.querySelector("h1").textContent = currentUser.username;
+  }
+</script>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
+-->

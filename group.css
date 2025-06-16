@@ -1,0 +1,229 @@
+/* group.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Jost', sans-serif;
+}
+
+body {
+  background: linear-gradient(to right, #e0f7fa, #e1bee7);
+  min-height: 100vh;
+  position: relative;
+  padding-left: 150px; /* Giữ chừa chỗ cho left-toolbar */
+}
+
+
+.left-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 150px;
+  height: 100%;
+  background-color: #292d3e;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.toolbar-btn {
+  width: 90%;
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 14px;
+  background-color: #3f475e;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-align: center;
+}
+
+.toolbar-btn:hover {
+  background-color: #5c6580;
+}
+
+/* ---------- HEADER TITLE ---------- */
+.header-title {
+  width: 930px;
+  height: 150px;
+  margin-left: 80px; 
+  margin-top: 20px;
+  background-color: #ffffff;
+  position: relative;
+  border-radius: 15px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.header-text {
+  position: absolute;
+  top: 50%; /* Căn giữa theo chiều dọc */
+  left: 30px; /* Cách mép trái 30px */
+  transform: translateY(-50%); /* Căn giữa chính xác */
+  font-size: 30px;
+  font-weight: bold;
+  color: #4a148c;
+}
+
+.header-gif {
+  position: absolute;
+  top: 50%;
+  right: 20px; 
+  transform: translateY(-50%);
+  width: 190px; 
+  height: auto;
+  object-fit: contain; 
+  border-radius: 10px; 
+}
+
+
+
+.warning-text {
+  text-align: center;
+  color: #4f4698;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 40px 0;
+}
+
+
+#group-container {
+  margin-top: 30px;
+  margin-left: 80px; 
+  max-width: 960px;
+  padding-bottom: 40px;
+}
+
+#group-container h2 {
+  color: #4a148c;
+  margin-bottom: 10px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+
+.group-section {
+  margin-bottom: 40px;
+}
+
+.group-section .work-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* ---------- TASK BOX (chỉ văn bản, không có hình) ---------- */
+.task-box {
+  position: relative;
+  width: calc((100% - 3 * 20px) / 4);
+  min-width: 200px;
+  background-color: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+.task-box:hover {
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Nếu muốn “dim” task đã hoàn thành */
+.completed-task {
+  opacity: 0.6;
+  filter: grayscale(50%);
+}
+
+/* ---------- TASK NAME ---------- */
+.task-box span {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+  width: 100%;
+  word-wrap: break-word;
+}
+
+/* ---------- DEADLINE BOX ---------- */
+.deadline-box {
+  width: 100%;
+  background: #f5f5f5;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  color: #4a148c;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: none; /* Chỉ để hiển thị countdown, không tương tác */
+}
+
+/* Text hiển thị thời gian countdown hoặc “chưa đặt deadline” */
+.progress-deadline {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* ---------- RESPONSIVE (khi màn hình hẹp) ---------- */
+@media (max-width: 1000px) {
+  .task-box {
+    width: calc((100% - 2 * 20px) / 3);
+  }
+}
+
+@media (max-width: 700px) {
+  .task-box {
+    width: calc((100% - 1 * 20px) / 2);
+  }
+}
+
+@media (max-width: 500px) {
+  body {
+    padding-left: 0;
+  }
+  .left-toolbar {
+    width: 60px;
+    padding-top: 20px;
+  }
+  .toolbar-btn {
+    font-size: 12px;
+    padding: 6px;
+  }
+  .header-title {
+    width: calc(100% - 20px);
+    margin-left: 10px;
+  }
+  #group-container {
+    margin-left: 10px;
+  }
+  .task-box {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+/* ---------- KEYFRAME CHO HIỆU ỨNG HIỂN THỊ task-box ---------- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

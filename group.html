@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nhóm Công Việc</title>
+  <link rel="stylesheet" href="group.css" />
+</head>
+<body>
+  <div class="left-toolbar">
+    <button class="toolbar-btn" onclick="location.href='work.html'">Home</button>
+    <button class="toolbar-btn" onclick="location.href='completed.html'">Completed</button>
+    <button class="toolbar-btn" onclick="location.href='group.html'">Group</button>
+    <button class="toolbar-btn" id="add-task-btn">Add</button>
+  </div>
+
+  
+  <div class="header-title">
+        <img src="./images/group1.gif" alt="Group GIF" class="header-gif">
+    <div class="header-text" id="user-greeting">Nhóm Công Việc Bạn Đã Tạo</div>
+  </div>
+
+  <div id="group-container"></div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const user = JSON.parse(localStorage.getItem('loggedInUser'));
+      const greetingDiv = document.getElementById('user-greeting');
+      if (user && user.username) {
+        // Nếu muốn bổ sung tên người dùng, ví dụ:
+        // greetingDiv.textContent = `${user.username} - nhóm công việc bạn đã tạo`;
+      }
+    });
+  </script>
+
+  <script src="group.js"></script>
+  <script>
+    document.getElementById('add-task-btn').addEventListener('click', () => {
+      const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+      const newTask = { text: 'Công việc mới', deadline: null, group: '' };
+      tasks.push(newTask);
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+      location.reload();
+    });
+  </script>
+</body>
+</html>

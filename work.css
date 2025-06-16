@@ -1,0 +1,390 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Jost', sans-serif;
+}
+
+body {
+  background: linear-gradient(to right, #e0f7fa, #e1bee7);
+  min-height: 100vh;
+  position: relative;
+  padding-left: 150px; /* Phù hợp với width của left-toolbar */
+}
+
+.left-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 150px;
+  height: 100%;
+  background-color: #292d3e;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.toolbar-btn {
+  width: 90%;
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 14px;
+  background-color: #3f475e;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-align: center;
+}
+
+.toolbar-btn:hover {
+  background-color: #5c6580;
+}
+
+.header-title {
+  width: 930px;
+  height: 150px;
+  margin-left: 80px; /* Thẳng hàng với left-toolbar */
+  margin-top: 20px;
+  background-color: #883add;
+  position: relative;
+  border-radius: 15px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.header-text {
+  position: absolute;
+  top: 50%;
+  left: 30px; 
+  transform: translateY(-50%); 
+  font-size: 30px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.header-gif {
+  position: absolute;
+  top: 50%;
+  right: 20px; /* Cách mép phải 20px, chỉnh tùy ý */
+  transform: translateY(-50%);
+  width: 190px; /* chỉnh kích thước phù hợp */
+  height: auto; /* tự động tỷ lệ */
+  border-radius: 10px; /* nếu muốn bo góc cho đẹp */
+  object-fit: contain; /* đảm bảo không tràn */
+}
+
+
+.warning-text {
+  text-align: center;
+  color: #4f4698;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 40px 0;
+}
+
+#work-container {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;      /* Cho phép xuống dòng */
+  gap: 20px;            /* Khoảng cách giữa các task-box */
+  max-width: 960px;     /* Chiều rộng tổng container */
+  margin-left: 80px;
+  padding-top: 20px;
+  position: relative;
+  min-height: 300px;
+  
+}
+
+
+
+
+.task-box {
+  position: relative; /* cần để đặt nút tuyệt đối bên trong */
+  width: calc((100% - 3 * 20px) / 4);
+  min-width: 220px;
+  min-height: 280px;
+  background-color: white;
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden; /* tránh nút bị tràn ra ngoài */
+  opacity: 0;
+  transform: translateY(20px);
+  contain: layout;
+}
+
+.task-box.show {
+ animation: fadeInUp 0.5s ease forwards;
+}
+
+
+.deadline-box {
+  min-height: 180px;  /* Tăng chiều cao phần deadline */
+  width: 100%;
+  background: #f5f5f5;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+
+.task-box:hover {
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.task-box img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.edit-btn,
+.delete-btn {
+  position: absolute;
+  top: 10px;
+  width: 28px;
+  height: 28px;
+  font-size: 16px;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: background-color 0.3s ease;
+}
+
+.edit-btn {
+  left: 10px;
+  background: #4caf50;
+}
+
+.edit-btn:hover {
+  background-color: #388e3c;
+}
+
+.delete-btn {
+  right: 10px;
+  background: #f44336;
+}
+
+.delete-btn:hover {
+  background-color: #d32f2f;
+}
+
+.completion-counter {
+  font-size: 14px;
+  color: #fff;
+  background-color: #3b82c4;
+  padding: 5px 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.deadline-box {
+  width: 100%;
+  background: #f5f5f5;
+  padding: 15px; 
+  border-radius: 10px;
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; 
+  z-index: 2;
+  pointer-events: auto;
+  min-height: 150px; 
+}
+
+.deadline-input {
+  padding: 8px; /* Tăng padding để ô input cao hơn */
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 5px;
+  z-index: 3;
+  pointer-events: auto;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.deadline-box button {
+  margin-top: 8px;
+  background-color: #fa9a00;
+  color: white;
+  border: none;
+  padding: 8px 12px; /* Tăng padding để nút cao hơn */
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.deadline-box select {
+  padding: 8px; /* Tăng padding để select cao hơn */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 5px;
+  font-size: 0.9rem;
+}
+
+.progress-wrapper {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+.progress-task {
+  background-color: #a19f9f80;
+  padding: 8px;
+  border-radius: 8px;
+  margin-bottom: 6px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: #4caf50;
+  transition: width 0.3s ease;
+}
+
+.side-rectangle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 230px;
+  max-height: 100vh;
+  background-color: #f8f8f8;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+  backface-visibility: hidden;
+  will-change: transform;
+  border-radius: 15px;
+  transition: height 0.3s ease;
+  overflow: hidden;
+  overflow-y: auto;
+  scrollbar-width: none;
+   -ms-overflow-style: none; 
+
+}
+
+.side-rectangle::-webkit-scrollbar {
+  display: none;           
+}
+
+
+
+.circle-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  animation: slideInFromRight 0.5s ease-out forwards;
+}
+
+.circle-text {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
+
+.circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #ccc;
+}
+
+.circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.task-card {
+  background-color: #ebe5f4;
+  border-left: 5px solid #7e57c2;
+  padding: 15px 20px;
+  margin-bottom: 10px;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.task-card h3 {
+  margin-bottom: 5px;
+  color: #4a148c;
+}
+
+.task-card .deadline {
+  font-size: 14px;
+  color: #6a1b9a;
+}
+
+
+/*hiệu ứng xuất hiện của task-box */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.task-box {
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+
+/* hiệu ứng chuyển của ô dealine-time */
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
